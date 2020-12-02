@@ -1,7 +1,7 @@
 {
-  "name": "node-http-server",
+  "name": "advent-of-code",
   "version": "1.0.0",
-  "description": "Node.js example server starter project",
+  "description": "Advent of code solutions",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js"
