@@ -8,7 +8,7 @@ Commands: `npm start [day.part]` e.g. `npm start 1.1`
 
 1. [x] [Day 1](https://adventofcode.com/2020/day/1)
 2. [x] [Day 2](https://adventofcode.com/2020/day/2)
-3. [ ] [Day 3](https://adventofcode.com/2020/day/3)
+3. [x] [Day 3](https://adventofcode.com/2020/day/3)
 4. [ ] [Day 4](https://adventofcode.com/2020/day/4)
 5. [ ] [Day 5](https://adventofcode.com/2020/day/5)
 6. [ ] [Day 6](https://adventofcode.com/2020/day/6)
