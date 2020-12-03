@@ -13,6 +13,9 @@ switch (myArgs[0]) {
   case "2.1":
     console.log(day2.puzzle1());
     break;
+  case "2.2":
+    console.log(day2.puzzle2());
+    break;
   default:
     console.log("No advent found");
 }

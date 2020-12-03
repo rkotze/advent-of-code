@@ -4,12 +4,8 @@ function puzzle1() {
   const list = fileReader("day2.txt");
   let count = 0;
   for (const password of list) {
+    if (!password) continue;
     const policy = password.match(/(\d+)-(\d+)\s([a-z]):\s(.+)/i);
-
-    if (!policy) {
-      console.log("log: ", password);
-      continue;
-    }
 
     const [, start, end, char, pass] = policy;
     const charFound = (pass.match(new RegExp(char, "g")) || []).length;
@@ -18,4 +14,20 @@ function puzzle1() {
   return count;
 }
 
+function puzzle2() {
+  const list = fileReader("day2.txt");
+  let count = 0;
+  for (const password of list) {
+    if (!password) continue;
+    const policy = password.match(/(\d+)-(\d+)\s([a-z]):\s(.+)/i);
+
+    const [, start, end, char, pass] = policy;
+    const first = pass.charAt(Number(start) - 1) === char;
+    const second = pass.charAt(Number(end) - 1) === char;
+    if (!(first && second) && (first || second)) count++;
+  }
+  return count;
+}
+
 exports.puzzle1 = puzzle1;
+exports.puzzle2 = puzzle2;
