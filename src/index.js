@@ -1,5 +1,6 @@
 const day1 = require("./day1");
 const day2 = require("./day2");
+const day3 = require("./day3");
 
 let myArgs = process.argv.slice(2);
 
@@ -15,6 +16,9 @@ switch (myArgs[0]) {
     break;
   case "2.2":
     console.log(day2.puzzle2());
+    break;
+  case "3.1":
+    console.log(day3.puzzle1());
     break;
   default:
     console.log("No advent found");
