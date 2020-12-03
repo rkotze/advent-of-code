@@ -1,26 +1,11 @@
 const { fileReader } = require("./file-reader");
 
 function puzzle1() {
-  // right 3 down 1
   const list = fileReader("day3.txt");
-  let x = 0;
-  let treeCount = 0;
-  for (let y = 1; y < list.length; y++) {
-    const row = list[y];
-    x += 3;
-    let square = row.charAt(x);
-    if (square.length === 0) {
-      const remaining = row.slice(x - 3).length;
-      x = 3 - remaining;
-      square = row.charAt(x);
-    }
-    if (square === "#") treeCount++;
-  }
-  return treeCount;
+  return calcTrees(list, 3, 1);
 }
 
 function puzzle2() {
-  // right 3 down 1
   const list = fileReader("day3.txt");
   const slopes = [
     [1, 1],
@@ -44,8 +29,7 @@ function calcTrees(list, right, down) {
     x += right;
     let square = row.charAt(x);
     if (square.length === 0) {
-      const remaining = row.slice(x - right).length;
-      x = right - remaining;
+      x = x - row.length;
       square = row.charAt(x);
     }
     if (square === "#") treeCount++;
