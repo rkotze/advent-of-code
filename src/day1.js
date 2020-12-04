@@ -34,5 +34,5 @@ function multiplyWhen2020(...values) {
   return 0;
 }
 
-exports.puzzle1 = puzzle1;
-exports.puzzle2 = puzzle2;
+console.log(puzzle1());
+console.log(puzzle2());

@@ -31,5 +31,5 @@ function puzzle2() {
   return count;
 }
 
-exports.puzzle1 = puzzle1;
-exports.puzzle2 = puzzle2;
+console.log(puzzle1());
+console.log(puzzle2());
