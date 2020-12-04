@@ -6,9 +6,9 @@ Commands: `node src/day1.js`
 
 ## 2020 solved
 
-1. [x] [x] [Day 1](https://adventofcode.com/2020/day/1)
-2. [x] [x] [Day 2](https://adventofcode.com/2020/day/2)
-3. [x] [x] [Day 3](https://adventofcode.com/2020/day/3)
-4. [x] [x] [Day 4](https://adventofcode.com/2020/day/4)
-5. [ ] [ ] [Day 5](https://adventofcode.com/2020/day/5)
-6. [ ] [ ] [Day 6](https://adventofcode.com/2020/day/6)
+1. :white_check_mark: :white_check_mark: [Day 1](https://adventofcode.com/2020/day/1)
+2. :white_check_mark: :white_check_mark: [Day 2](https://adventofcode.com/2020/day/2)
+3. :white_check_mark: :white_check_mark: [Day 3](https://adventofcode.com/2020/day/3)
+4. :white_check_mark: :white_check_mark: [Day 4](https://adventofcode.com/2020/day/4)
+5. :black_square_button: :black_square_button: [Day 5](https://adventofcode.com/2020/day/5)
+6. :black_square_button: :black_square_button: [Day 6](https://adventofcode.com/2020/day/6)
