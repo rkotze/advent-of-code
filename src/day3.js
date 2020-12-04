@@ -1,12 +1,14 @@
 const { fileReader } = require("./file-reader");
 
 function puzzle1() {
-  const list = fileReader("day3.txt");
+  const data = fileReader("day3.txt");
+  const list = data.split("\n");
   return calcTrees(list, 3, 1);
 }
 
 function puzzle2() {
-  const list = fileReader("day3.txt");
+  const data = fileReader("day3.txt");
+  const list = data.split("\n");
   const slopes = [
     [1, 1],
     [3, 1],

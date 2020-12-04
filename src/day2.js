@@ -1,7 +1,8 @@
 const { fileReader } = require("./file-reader");
 
 function puzzle1() {
-  const list = fileReader("day2.txt");
+  const data = fileReader("day2.txt");
+  const list = data.split("\n");
   let count = 0;
   for (const password of list) {
     if (!password) continue;
@@ -15,7 +16,8 @@ function puzzle1() {
 }
 
 function puzzle2() {
-  const list = fileReader("day2.txt");
+  const data = fileReader("day2.txt");
+  const list = data.split("\n");
   let count = 0;
   for (const password of list) {
     if (!password) continue;

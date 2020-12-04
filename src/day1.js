@@ -1,7 +1,8 @@
 const { fileReader } = require("./file-reader");
 
 function puzzle1() {
-  const list = fileReader("day1.txt");
+  const data = fileReader("day1.txt");
+  const list = data.split("\n");
   for (const num1 of list) {
     for (const num2 of list) {
       const val = multiplyWhen2020(Number(num1), Number(num2));
@@ -12,7 +13,8 @@ function puzzle1() {
 }
 
 function puzzle2() {
-  const list = fileReader("day1.txt");
+  const data = fileReader("day1.txt");
+  const list = data.split("\n");
   for (const num1 of list) {
     for (const num2 of list) {
       for (const num3 of list) {
