@@ -5,6 +5,24 @@ const { fileReader } = require("./file-reader");
 function puzzle1() {
   const data = fileReader("day5.txt");
   const list = data.split("\n");
+  let seatIds = getAllSeatIds(list);
+  return Math.max(...seatIds);
+}
+
+function puzzle2() {
+  const data = fileReader("day5.txt");
+  const list = data.split("\n");
+  let seatIds = getAllSeatIds(list);
+  seatIds.sort((a, b) => a - b);
+  for (let i = 0; i < seatIds.length; i++) {
+    const seatA = seatIds[i];
+    const seatB = seatIds[i + 1];
+    if (seatB - seatA === 2) return seatA + 1;
+  }
+  return 0;
+}
+
+function getAllSeatIds(list) {
   let seatIds = [];
   for (const boardingPass of list) {
     const parts = boardingPass.split("");
@@ -19,7 +37,7 @@ function puzzle1() {
 
     seatIds.push(Number(rowRange[0]) * 8 + Number(columnRange[0]));
   }
-  return Math.max(...seatIds);
+  return seatIds;
 }
 
 function upperRange(rowRange) {
@@ -31,3 +49,4 @@ function lowerRange(rowRange) {
 }
 
 console.log(puzzle1());
+console.log(puzzle2());
