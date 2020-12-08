@@ -1,5 +1,7 @@
 # Advent of code
 
+**No peeking if you've not done the day :wink:**
+
 Simple node script to help provide a space to solve the puzzles for [Advent of code](https://adventofcode.com/). 
 
 Commands: `node src/day1.js`
@@ -12,5 +14,5 @@ Commands: `node src/day1.js`
 4. :white_check_mark: :white_check_mark: [Day 4](https://adventofcode.com/2020/day/4)
 5. :white_check_mark: :white_check_mark: [Day 5](https://adventofcode.com/2020/day/5)
 6. :white_check_mark: :white_check_mark: [Day 6](https://adventofcode.com/2020/day/6)
-7. :black_square_button: :black_square_button: [Day 7](https://adventofcode.com/2020/day/7)
+7. :white_check_mark: :white_check_mark: [Day 7](https://adventofcode.com/2020/day/7)
 8. :black_square_button: :black_square_button: [Day 8](https://adventofcode.com/2020/day/8)
