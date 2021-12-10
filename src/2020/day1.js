@@ -1,4 +1,4 @@
-const { fileReader } = require("./file-reader");
+const { fileReader } = require("../file-reader");
 
 function puzzle1() {
   const data = fileReader("day1.txt");
