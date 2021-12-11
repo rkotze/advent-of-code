@@ -2,9 +2,17 @@
 
 **No peeking if you've not done the day :wink:**
 
-Simple node script to help provide a space to solve the puzzles for [Advent of code](https://adventofcode.com/). 
+Simple node script to help provide a space to solve the puzzles for [Advent of code](https://adventofcode.com/).
 
-Commands: `node src/day1.js`
+Create `.env` file with key `session=x`. Grab session cookie from advent of code.
+
+Use this to download your puzzle `node src/get-input.js 2021 1`.
+
+Commands: `node src/2021/day1.js`
+
+## 2021 Solved
+
+1. :black_square_button: :black_square_button: [Day 1](https://adventofcode.com/2021/day/1)
 
 ## 2020 solved
 
