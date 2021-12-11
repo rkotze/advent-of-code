@@ -7,7 +7,7 @@ function fileReader(filePath) {
   });
 }
 
-function readPuzzle(year, filename, fn = (data) => data.split("\n")) {
+function readPuzzle(year, filename, fn = (data) => data.split(/\n/g)) {
   const puzzleData = path.join(__dirname, year, "data", filename);
   return fn(fileReader(puzzleData));
 }
