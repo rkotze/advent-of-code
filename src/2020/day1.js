@@ -1,7 +1,7 @@
-const { fileReader } = require("../file-reader");
+const { readPuzzle } = require("../file-reader");
 
 function puzzle1() {
-  const data = fileReader("day1.txt");
+  const data = readPuzzle("2020", "day1.txt");
   const list = data.split("\n");
   for (const num1 of list) {
     for (const num2 of list) {
@@ -13,7 +13,7 @@ function puzzle1() {
 }
 
 function puzzle2() {
-  const data = fileReader("day1.txt");
+  const data = readPuzzle("2020", "day1.txt");
   const list = data.split("\n");
   for (const num1 of list) {
     for (const num2 of list) {
