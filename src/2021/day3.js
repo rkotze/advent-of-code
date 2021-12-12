@@ -28,3 +28,43 @@ function puzzle1() {
 }
 
 console.log(puzzle1());
+
+function puzzle2() {
+  const list = readPuzzle("2021", "day3.txt");
+
+  let o2 = binarySieve(list, 0, (counts) => {
+    if (counts[0] > counts[1]) return 0;
+    else return 1;
+  });
+  let co2 = binarySieve(list, 0, (counts) => {
+    if (counts[0] > counts[1]) return 1;
+    else return 0;
+  });
+
+  const o2D = parseInt(o2, 2);
+  const co2D = parseInt(co2, 2);
+  return o2D * co2D;
+}
+
+function binarySieve(list, col, predicate) {
+  if (list.length === 1) return list[0];
+
+  let countCollection = Array.from(Array(2), () => 0);
+  let binaryCollection = Array.from(Array(2), () => []);
+  for (const binary of list) {
+    for (let i = col; i < binary.length; i++) {
+      const bit = Number(binary[i]);
+      countCollection[bit]++;
+      binaryCollection[bit].push(binary);
+      i = binary.length;
+    }
+  }
+
+  return binarySieve(
+    binaryCollection[predicate(countCollection)],
+    col + 1,
+    predicate
+  );
+}
+
+console.log(puzzle2());
