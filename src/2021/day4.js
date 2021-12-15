@@ -1,11 +1,14 @@
 const { readPuzzle } = require("../file-reader");
 
-function puzzle1() {
+function puzzle(puzzle1 = true) {
   const { numbers, boards } = buildGame();
   const checkboards = buildCheckboards(boards);
+  let winners = [];
   for (let i = 0; i < numbers.length; i++) {
     const number = numbers[i];
-    for (const board of checkboards) {
+    for (let k = 0; k < checkboards.length; k++) {
+      if (winners.includes(k)) continue;
+      const board = checkboards[k];
       for (let j = 0; j < board.rows.length; j++) {
         const row = board.rows[j];
         const col = board.columns[j];
@@ -18,14 +21,22 @@ function puzzle1() {
           col[colIndex] = "x";
         }
         if (checkForWinner(row) || checkForWinner(col)) {
-          return sumBoard(board.rows) * number;
+          if (puzzle1) {
+            return sumBoard(board.rows) * number;
+          }
+          if (winners.length === checkboards.length - 1) {
+            return sumBoard(board.rows) * number;
+          }
+          winners.push(k);
+          break;
         }
       }
     }
   }
 }
 
-console.log(puzzle1());
+console.log(puzzle());
+console.log(puzzle(false));
 
 function checkForWinner(arr) {
   return arr.every((val) => val === "x");
