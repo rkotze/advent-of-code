@@ -18,7 +18,7 @@ Commands: `node src/2021/day1.js`
 4. :white_check_mark: :white_check_mark: [Day 4](https://adventofcode.com/2021/day/4)
 5. :white_check_mark: :white_check_mark: [Day 5](https://adventofcode.com/2021/day/5)
 6. :white_check_mark: :white_check_mark: [Day 6](https://adventofcode.com/2021/day/6)
-7. :black_square_button: :black_square_button: [Day 7](https://adventofcode.com/2021/day/7)
+7. :white_check_mark: :black_square_button: [Day 7](https://adventofcode.com/2021/day/7)
 8. :black_square_button: :black_square_button: [Day 8](https://adventofcode.com/2021/day/8)
 
 ## 2020 solved
