@@ -12,7 +12,8 @@ Commands: `node src/2021/day1.js`
 
 ## 2022 Solved
 
-1. :black_square_button: :black_square_button: [Day 1](https://adventofcode.com/2022/day/1)
+1. :white_check_mark: :white_check_mark: [Day 1](https://adventofcode.com/2022/day/1)
+2. :black_square_button: :black_square_button: [Day 2](https://adventofcode.com/2022/day/2)
 
 ## 2021 Solved
 
