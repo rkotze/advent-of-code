@@ -6,7 +6,7 @@ Simple node script to help provide a space to solve the puzzles for [Advent of c
 
 Create `.env` file with key `session=x`. Grab session cookie from advent of code.
 
-Use this to download your puzzle `node src/get-input.js 2021 1`.
+Use this to download your puzzle `node src/get-input.js 1 [2022]`. First number is the day. Defaults to current year which can be overridden with second param.
 
 Commands: `node src/2021/day1.js`
 

@@ -5,7 +5,9 @@ const { envVars } = require("./file-reader");
 
 const { session } = envVars();
 
-const [year, day] = process.argv.slice(2);
+const [day, yearOverride] = process.argv.slice(2);
+const d = new Date();
+let year = yearOverride || d.getFullYear();
 const filePath = path.join(__dirname, `/${year}/data/day${day}.txt`);
 
 https
