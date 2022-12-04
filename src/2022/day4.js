@@ -18,3 +18,22 @@ function puzzle1() {
 }
 
 console.log(puzzle1());
+
+function puzzle2() {
+  const spacesList = readPuzzle("2022", "day4.txt", (raw) => {
+    return raw.split(/\n/g).map((spaces) => spaces.split(","));
+  });
+
+  let total = 0;
+  for (const spaces of spacesList) {
+    const [front, back] = spaces;
+    const [ff, fb] = front.split("-").map((n) => Number(n));
+    const [bf, bb] = back.split("-").map((n) => Number(n));
+    if (fb < bf || ff > bb) {
+      total += 1;
+    }
+  }
+  return spacesList.length - total;
+}
+
+console.log(puzzle2());
