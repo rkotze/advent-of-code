@@ -4,11 +4,15 @@
 
 Simple node script to help provide a space to solve the puzzles for [Advent of code](https://adventofcode.com/).
 
-Create `.env` file with key `session=x`. Grab session cookie from advent of code.
+## Getting started
 
-Use this to download your puzzle `node src/get-input.js 1 [2022]`. First number is the day. Defaults to current year which can be overridden with second param.
+Create `.env` file with key `session=x`. Login to Advent of code and grab session cookie.
 
-Commands: `node src/2021/day1.js`
+### Commands
+
+Use this to download your puzzle `npm start -- [1] [2022]`. Both options are optional, first is the `day` and second is `year`. They defaults to current year and day.
+
+Run code: `node src/2022/day1.js`
 
 ## 2022 Solved
 
@@ -46,6 +50,3 @@ Commands: `node src/2021/day1.js`
 10. :white_check_mark: :white_check_mark: [Day 10](https://adventofcode.com/2020/day/10)
 11. :white_check_mark: :white_check_mark: [Day 11](https://adventofcode.com/2020/day/11)
 12. :black_square_button: :black_square_button: [Day 12](https://adventofcode.com/2020/day/12)
-13. :black_square_button: :black_square_button: [Day 13](https://adventofcode.com/2020/day/13)
-14. :black_square_button: :black_square_button: [Day 14](https://adventofcode.com/2020/day/14)
-15. :black_square_button: :black_square_button: [Day 15](https://adventofcode.com/2020/day/15)

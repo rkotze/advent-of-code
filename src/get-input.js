@@ -5,11 +5,14 @@ const { envVars } = require("./file-reader");
 
 const { session } = envVars();
 
-const [day, yearOverride] = process.argv.slice(2);
+const [dayOverride, yearOverride] = process.argv.slice(2);
+
 const d = new Date();
 let year = yearOverride || d.getFullYear();
-const filePath = path.join(__dirname, `/${year}/data/day${day}.txt`);
+let day = dayOverride || d.getDate();
+console.log(`🚀 setting up year ${year} day ${day}`);
 
+const dataFilePath = path.join(__dirname, `/${year}/data/day${day}.txt`);
 https
   .get(
     {
@@ -22,16 +25,36 @@ https
       },
     },
     (res) => {
-      const file = fs.createWriteStream(filePath);
+      const file = fs.createWriteStream(dataFilePath);
 
       res.pipe(file);
 
       file.on("finish", () => {
         file.close();
-        console.log(`File downloaded!`);
+        console.log(`Puzzle data downloaded!`);
       });
     }
   )
   .on("error", (err) => {
     console.log("Error: ", err.message);
   });
+
+const jsFilePath = path.join(__dirname, `/${year}/day${day}.js`);
+
+if (!fs.existsSync(jsFilePath)) {
+  fs.writeFileSync(
+    jsFilePath,
+    `const { readPuzzle } = require("../file-reader");
+  
+    function puzzle1() {
+      const data = readPuzzle("2022", "day${day}t.txt");
+      for (const num1 of data) {
+        
+      }
+      return 0;
+    }
+    
+    console.log(puzzle1());`
+  );
+  console.log(`JS file create!`);
+}
