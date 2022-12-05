@@ -45,7 +45,7 @@ if (!fs.existsSync(jsFilePath)) {
   fs.writeFileSync(
     jsFilePath,
     `const { readPuzzle } = require("../file-reader");
-  
+    
     function puzzle1() {
       const data = readPuzzle("2022", "day${day}t.txt");
       for (const num1 of data) {
@@ -56,5 +56,12 @@ if (!fs.existsSync(jsFilePath)) {
     
     console.log(puzzle1());`
   );
-  console.log(`JS file create!`);
+  console.log(`JS file created!`);
+}
+
+const testTxtFilePath = path.join(__dirname, `/${year}/data/day${day}t.txt`);
+
+if (!fs.existsSync(testTxtFilePath)) {
+  fs.writeFileSync(testTxtFilePath, `Add data.`);
+  console.log(`Test txt file created!`);
 }
