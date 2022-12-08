@@ -1,4 +1,12 @@
+const assert = require("assert");
 const { readPuzzle } = require("../file-reader");
+
+function addSubDirSize(path, dirMap) {
+  const strOldPath = path.join("/");
+  path.pop();
+  const strCurPath = path.join("/");
+  dirMap.set(strCurPath, dirMap.get(strOldPath) + dirMap.get(strCurPath));
+}
 
 function puzzle1() {
   const data = readPuzzle("2022", "day7.txt");
@@ -11,10 +19,7 @@ function puzzle1() {
       dirMap.set(path.join("/"), 0);
     }
     if (line.includes("$ cd ..")) {
-      const strOldPath = path.join("/");
-      path.pop();
-      const strCurPath = path.join("/");
-      dirMap.set(strCurPath, dirMap.get(strOldPath) + dirMap.get(strCurPath));
+      addSubDirSize(path, dirMap);
     }
 
     const file = line.match(/^(\d+)/g);
@@ -24,13 +29,11 @@ function puzzle1() {
     }
   }
 
+  // accumulate sub dir sizes
   while (path.length > 1) {
-    const strOldPath = path.join("/");
-    path.pop();
-    const strCurPath = path.join("/");
-
-    dirMap.set(strCurPath, dirMap.get(strOldPath) + dirMap.get(strCurPath));
+    addSubDirSize(path, dirMap);
   }
+
   let total = 0;
   for (const size of dirMap.values()) {
     if (size <= 100000) total += size;
@@ -39,7 +42,9 @@ function puzzle1() {
   return total;
 }
 
-console.log(puzzle1());
+const puzzleAnswer1 = puzzle1();
+assert(1908462 === puzzleAnswer1);
+console.log(puzzleAnswer1);
 
 function puzzle2() {
   const data = readPuzzle("2022", "day7.txt");
@@ -52,10 +57,7 @@ function puzzle2() {
       dirMap.set(path.join("/"), 0);
     }
     if (line.includes("$ cd ..")) {
-      const strOldPath = path.join("/");
-      path.pop();
-      const strCurPath = path.join("/");
-      dirMap.set(strCurPath, dirMap.get(strOldPath) + dirMap.get(strCurPath));
+      addSubDirSize(path, dirMap);
     }
 
     const file = line.match(/^(\d+)/g);
@@ -66,11 +68,7 @@ function puzzle2() {
   }
 
   while (path.length > 1) {
-    const strOldPath = path.join("/");
-    path.pop();
-    const strCurPath = path.join("/");
-
-    dirMap.set(strCurPath, dirMap.get(strOldPath) + dirMap.get(strCurPath));
+    addSubDirSize(path, dirMap);
   }
 
   const sysSize = 70000000;
@@ -82,4 +80,6 @@ function puzzle2() {
   return Math.min(...options);
 }
 
-console.log(puzzle2());
+const puzzleAnswer2 = puzzle2();
+assert(3979145 === puzzleAnswer2);
+console.log(puzzleAnswer2);
