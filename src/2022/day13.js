@@ -40,3 +40,19 @@ function puzzle1() {
 }
 
 console.log(puzzle1());
+
+function puzzle2() {
+  let data = readPuzzle("2022", "day13.txt", (data) => {
+    return data.split(/\n/g).filter((v) => v.length);
+  });
+  const dividers = ["[[2]]", "[[6]]"];
+  data = data.concat(dividers);
+  data.sort((a, b) => {
+    return compare(eval(a), eval(b));
+  });
+
+  const [a, b] = dividers.map((d) => data.indexOf(d) + 1);
+  return a * b;
+}
+
+console.log(puzzle2());
