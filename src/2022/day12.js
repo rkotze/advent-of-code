@@ -1,3 +1,4 @@
+const assert = require("assert");
 const { readPuzzle } = require("../file-reader");
 
 function charVal(char) {
@@ -14,47 +15,46 @@ function puzzle1() {
   const end = "E";
   const visited = new Set("20:0");
   const queue = [{ val: "a", row: 20, col: 0, count: 0 }];
+  const directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
+  const rowLength = grid.length;
+  const colLength = grid[0].length;
 
   while (queue.length > 0) {
     const { val, row, col, count } = queue.shift();
 
     if (val == end) return count;
 
-    const right = grid[row][col + 1] || "?";
-    const left = grid[row][col - 1] || "?";
-    const top = grid[row - 1] ? grid[row - 1][col] : "?";
-    const bottom = grid[row + 1] ? grid[row + 1][col] : "?";
-
     const nextVal = charVal(val) + 1;
-    let nextKey = row + ":" + (col - 1);
-    if (!visited.has(nextKey) && charVal(left) <= nextVal) {
-      visited.add(nextKey);
-      queue.push({ val: left, row, col: col - 1, count: count + 1 });
-    }
-
-    nextKey = row + ":" + (col + 1);
-    if (!visited.has(nextKey) && charVal(right) <= nextVal) {
-      visited.add(nextKey);
-      queue.push({ val: right, row, col: col + 1, count: count + 1 });
-    }
-
-    nextKey = row + 1 + ":" + col;
-    if (!visited.has(nextKey) && charVal(bottom) <= nextVal) {
-      visited.add(nextKey);
-      queue.push({ val: bottom, row: row + 1, col: col, count: count + 1 });
-    }
-
-    nextKey = row - 1 + ":" + col;
-    if (!visited.has(nextKey) && charVal(top) <= nextVal) {
-      visited.add(nextKey);
-      queue.push({ val: top, row: row - 1, col: col, count: count + 1 });
+    for (const [addRow, addCol] of directions) {
+      const newRow = row + addRow;
+      const newCol = col + addCol;
+      if (
+        newRow < 0 ||
+        newRow >= rowLength ||
+        newCol < 0 ||
+        newCol >= colLength
+      )
+        continue;
+      const cell = grid[newRow][newCol];
+      let nextKey = newRow + ":" + newCol;
+      if (!visited.has(nextKey) && charVal(cell) <= nextVal) {
+        visited.add(nextKey);
+        queue.push({ val: cell, row: newRow, col: newCol, count: count + 1 });
+      }
     }
   }
 
   return -1;
 }
 
-console.log(puzzle1());
+const p1 = puzzle1();
+console.log(p1);
+assert(p1 === 490);
 
 function puzzle2() {
   const grid = readPuzzle("2022", "day12.txt", (data) => {
@@ -64,6 +64,14 @@ function puzzle2() {
   const end = "E";
   const visited = new Set();
   const queue = [];
+  const directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
+  const rowLength = grid.length;
+  const colLength = grid[0].length;
 
   for (let i = 0; i < grid.length; i++) {
     const r = grid[i];
@@ -80,57 +88,35 @@ function puzzle2() {
 
     if (val == end) return count;
 
-    const right = grid[row][col + 1] || "?";
-    const left = grid[row][col - 1] || "?";
-    const top = grid[row - 1] ? grid[row - 1][col] : "?";
-    const bottom = grid[row + 1] ? grid[row + 1][col] : "?";
-
     const nextVal = charVal(val) + 1;
-    let nextKey = row + ":" + (col - 1);
-    if (!visited.has(nextKey) && charVal(left) <= nextVal) {
-      visited.add(nextKey);
-      const isA = left == "a";
-      queue.push({ val: left, row, col: col - 1, count: isA ? 0 : count + 1 });
-    }
-
-    nextKey = row + ":" + (col + 1);
-    if (!visited.has(nextKey) && charVal(right) <= nextVal) {
-      visited.add(nextKey);
-      const isA = right == "a";
-      queue.push({
-        val: right,
-        row,
-        col: col + 1,
-        count: isA ? 0 : count + 1,
-      });
-    }
-
-    nextKey = row + 1 + ":" + col;
-    if (!visited.has(nextKey) && charVal(bottom) <= nextVal) {
-      visited.add(nextKey);
-      const isA = bottom == "a";
-      queue.push({
-        val: bottom,
-        row: row + 1,
-        col: col,
-        count: isA ? 0 : count + 1,
-      });
-    }
-
-    nextKey = row - 1 + ":" + col;
-    if (!visited.has(nextKey) && charVal(top) <= nextVal) {
-      visited.add(nextKey);
-      const isA = top == "a";
-      queue.push({
-        val: top,
-        row: row - 1,
-        col: col,
-        count: isA ? 0 : count + 1,
-      });
+    for (const [addRow, addCol] of directions) {
+      const newRow = row + addRow;
+      const newCol = col + addCol;
+      if (
+        newRow < 0 ||
+        newRow >= rowLength ||
+        newCol < 0 ||
+        newCol >= colLength
+      )
+        continue;
+      const cell = grid[newRow][newCol];
+      let nextKey = newRow + ":" + newCol;
+      if (!visited.has(nextKey) && charVal(cell) <= nextVal) {
+        visited.add(nextKey);
+        const isA = cell == "a";
+        queue.push({
+          val: cell,
+          row: newRow,
+          col: newCol,
+          count: isA ? 0 : count + 1,
+        });
+      }
     }
   }
 
   return -1;
 }
 
-console.log(puzzle2());
+const p2 = puzzle2();
+console.log(p2);
+assert(p2 === 488);
