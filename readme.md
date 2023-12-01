@@ -14,6 +14,11 @@ Use this to download your puzzle `npm start -- [1] [2022]`. Both options are opt
 
 Run code: `node src/2022/day1.js`
 
+## 2023 Solved
+
+1. :white_check_mark: :black_square_button: [Day 1](https://adventofcode.com/2023/day/1)
+2. :black_square_button: :black_square_button: [Day 2](https://adventofcode.com/2023/day/2)
+
 ## 2022 Solved
 
 1. :white_check_mark: :white_check_mark: [Day 1](https://adventofcode.com/2022/day/1)
