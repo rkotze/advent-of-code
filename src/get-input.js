@@ -12,7 +12,15 @@ let year = yearOverride || d.getFullYear();
 let day = dayOverride || d.getDate();
 console.log(`🚀 setting up year ${year} day ${day}`);
 
-const dataFilePath = path.join(__dirname, `/${year}/data/day${day}.txt`);
+const folderYear = path.join(__dirname, `/${year}`);
+const folderData = path.join(folderYear, `data`);
+
+if (!fs.existsSync(folderYear)) {
+  fs.mkdirSync(folderYear);
+  fs.mkdirSync(folderData);
+}
+
+const dataFilePath = path.join(folderData, `day${day}.txt`);
 https
   .get(
     {
@@ -39,7 +47,7 @@ https
     console.log("Error: ", err.message);
   });
 
-const jsFilePath = path.join(__dirname, `/${year}/day${day}.js`);
+const jsFilePath = path.join(folderYear, `day${day}.js`);
 
 if (!fs.existsSync(jsFilePath)) {
   fs.writeFileSync(
@@ -47,7 +55,7 @@ if (!fs.existsSync(jsFilePath)) {
     `const { readPuzzle } = require("../file-reader");
     
     function puzzle1() {
-      const data = readPuzzle("2022", "day${day}t.txt");
+      const data = readPuzzle("${year}", "day${day}t.txt");
       for (const num1 of data) {
         
       }
@@ -59,7 +67,7 @@ if (!fs.existsSync(jsFilePath)) {
   console.log(`JS file created!`);
 }
 
-const testTxtFilePath = path.join(__dirname, `/${year}/data/day${day}t.txt`);
+const testTxtFilePath = path.join(folderData, `day${day}t.txt`);
 
 if (!fs.existsSync(testTxtFilePath)) {
   fs.writeFileSync(testTxtFilePath, `Add data.`);
