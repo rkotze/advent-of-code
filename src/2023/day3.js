@@ -55,3 +55,75 @@ function isNumber(str) {
 }
 
 console.log(puzzle1());
+
+function puzzle2() {
+  const rows = readPuzzle("2023", "day3.txt");
+  const numberCoords = {};
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i].split("");
+    let numS = "";
+    let symbol = "";
+    for (let k = 0; k < row.length; k++) {
+      const cell = row[k];
+      if (isNumber(cell)) {
+        numS += cell;
+        if (!symbol && gearScan(rows, i, k)) {
+          let gear = gearScan(rows, i, k);
+          symbol = `${gear.rows}:${gear.cell}`;
+          let hasGear = numberCoords[symbol];
+          if (!hasGear) numberCoords[symbol] = [];
+        }
+      }
+      if (!isNumber(cell)) {
+        if (symbol && numS.length) {
+          numberCoords[symbol].push(Number(numS));
+        }
+        symbol = "";
+        numS = "";
+      }
+    }
+  }
+
+  let total = 0;
+  let gears = Object.values(numberCoords);
+  for (const powers of gears) {
+    if (powers.length === 2) {
+      total += powers[0] * powers[1];
+    }
+  }
+
+  return total;
+}
+
+function isGear(val) {
+  return typeof val !== "undefined" && val === "*";
+}
+
+function gearScan(rows, rowPos, cellPos) {
+  if (isGear(rows[rowPos][cellPos + 1]))
+    return { rows: rowPos, cell: cellPos + 1 };
+  if (isGear(rows[rowPos][cellPos - 1]))
+    return { rows: rowPos, cell: cellPos - 1 };
+
+  if (rows[rowPos + 1]) {
+    if (isGear(rows[rowPos + 1][cellPos]))
+      return { rows: rowPos + 1, cell: cellPos };
+    if (isGear(rows[rowPos + 1][cellPos + 1]))
+      return { rows: rowPos + 1, cell: cellPos + 1 };
+    if (isGear(rows[rowPos + 1][cellPos - 1]))
+      return { rows: rowPos + 1, cell: cellPos - 1 };
+  }
+
+  if (rows[rowPos - 1]) {
+    if (isGear(rows[rowPos - 1][cellPos]))
+      return { rows: rowPos - 1, cell: cellPos };
+    if (isGear(rows[rowPos - 1][cellPos - 1]))
+      return { rows: rowPos - 1, cell: cellPos - 1 };
+    if (isGear(rows[rowPos - 1][cellPos + 1]))
+      return { rows: rowPos - 1, cell: cellPos + 1 };
+  }
+
+  return false;
+}
+
+console.log(puzzle2());
