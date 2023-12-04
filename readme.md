@@ -19,7 +19,8 @@ Run code: `node src/2022/day1.js`
 1. :white_check_mark: :white_check_mark: [Day 1](https://adventofcode.com/2023/day/1)
 2. :white_check_mark: :white_check_mark: [Day 2](https://adventofcode.com/2023/day/2)
 3. :white_check_mark: :white_check_mark: [Day 3](https://adventofcode.com/2023/day/3)
-4. :black_square_button: :**black_square_button**: [Day 4](https://adventofcode.com/2023/day/4)
+4. :white_check_mark: :black_square_button: [Day 4](https://adventofcode.com/2023/day/4)
+5. :black_square_button: :black_square_button: [Day 5](https://adventofcode.com/2023/day/5)
 
 ## 2022 Solved
 
