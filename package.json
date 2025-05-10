@@ -6,9 +6,8 @@
   "scripts": {
     "start": "node src/get-input.js"
   },
-  "dependencies": {},
   "devDependencies": {
-    "eslint": "^8.28.0"
+    "eslint": "^9.26.0"
   },
   "keywords": []
 }
