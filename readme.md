@@ -10,7 +10,9 @@ Create `.env` file with key `session=x`. Login to Advent of code and grab sessio
 
 ### Commands
 
-Use this to download your puzzle `npm start -- [1] [2022]`. Both options are optional, first is the `day` and second is `year`. They defaults to current year and day.
+Download puzzle data: `npm start [1] [2022]`.
+
+`npm start [1] [2022]` both options are optional, first is the `day` and second is `year`. They defaults to current year and day.
 
 Run code: `node src/2022/day1.js`
 
@@ -18,7 +20,8 @@ Run code: `node src/2022/day1.js`
 
 1. :white_check_mark: :white_check_mark: [Day 1](https://adventofcode.com/2024/day/1)
 2. :white_check_mark: :white_check_mark: [Day 2](https://adventofcode.com/2024/day/2)
-3. :black_square_button: :black_square_button: [Day 3](https://adventofcode.com/2024/day/3)
+3. :white_check_mark: :black_square_button: [Day 3](https://adventofcode.com/2024/day/3)
+4. :black_square_button: :black_square_button: [Day 3](https://adventofcode.com/2024/day/3)
    
 ## 2023 Solved
 
