@@ -8,7 +8,8 @@ const { session } = envVars();
 const [dayOverride, yearOverride] = process.argv.slice(2);
 
 const d = new Date();
-let year = yearOverride || d.getFullYear();
+let year =
+  yearOverride || d.getMonth() === 11 ? d.getFullYear() : d.getFullYear() - 1;
 let day = dayOverride || d.getDate();
 console.log(`🚀 setting up year ${year} day ${day}`);
 
