@@ -55,3 +55,47 @@ function wordCount(grid, word) {
   return wordCount;
 }
 console.log(puzzle1());
+
+function puzzle2() {
+  const grid = readPuzzle("2024", "day4.txt", (grid) => {
+    return grid
+      .trim()
+      .split("\n")
+      .map((line) => line.trim().split(""));
+  });
+
+  return xWordCount(grid, "MAS");
+}
+
+function xWordCount(grid, word) {
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const middle = word[1];
+
+  let wordCount = 0;
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (grid[r][c] !== middle) continue;
+      if (r - 1 >= 0 && c + 1 < cols && r + 1 < rows && c - 1 >= 0) {
+        const diag1Forward =
+          grid[r - 1][c - 1] === word[0] && grid[r + 1][c + 1] === word[2];
+
+        const diag1Reverse =
+          grid[r - 1][c - 1] === word[2] && grid[r + 1][c + 1] === word[0];
+
+        const diag2Forward =
+          grid[r - 1][c + 1] === word[0] && grid[r + 1][c - 1] === word[2];
+
+        const diag2Reverse =
+          grid[r - 1][c + 1] === word[2] && grid[r + 1][c - 1] === word[0];
+
+        if ((diag1Forward || diag1Reverse) && (diag2Forward || diag2Reverse)) {
+          wordCount++;
+        }
+      }
+    }
+  }
+  return wordCount;
+}
+
+console.log(puzzle2());
